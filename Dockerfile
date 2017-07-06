@@ -14,7 +14,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/*
 
 #install UniFi Controller
-RUN curl -OLS https://www.ubnt.com/downloads/unifi/5.6.7-63ab9a7965/unifi_sysvinit_all.deb \
+RUN curl -OLS https://www.ubnt.com/downloads/unifi/5.6.10-f6637e5b6d/unifi_sysvinit_all.deb \
     && dpkg -i unifi_sysvinit_all.deb \
     && rm unifi_sysvinit_all.deb
 
