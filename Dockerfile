@@ -8,10 +8,15 @@ EXPOSE 8080/tcp 8443/tcp 8880/tcp 8843/tcp 6789/tcp 3478/udp 10001/udp
 
 ENV DEBIAN_FRONTEND noninteractive
 
-#install needed packages
+#install needed packages with oracle jdk due to bug in zlib
 RUN apt update \
-    && apt install -y curl binutils jsvc mongodb-server openjdk-8-jdk-headless libcap2 \
-    && rm -rf /var/lib/apt/lists/*
+    && apt install -y software-properties-common \
+    && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
+    && add-apt-repository -y ppa:webupd8team/java \
+    && apt update \
+    && apt install -y curl binutils jsvc mongodb-server oracle-java8-installer libcap2 \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/cache/oracle-jdk8-installer
 
 #install UniFi Controller
 RUN curl -OLS https://www.ubnt.com/downloads/unifi/5.6.12-d503e7daad/unifi_sysvinit_all.deb \
