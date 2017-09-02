@@ -19,7 +19,7 @@ RUN apt update \
     && rm -rf /var/cache/oracle-jdk8-installer
 
 #install UniFi Controller
-RUN curl -OLS https://dl.ubnt.com/unifi/5.6.15-23e9b6ff64/unifi_sysvinit_all.deb \
+RUN curl -OLS https://dl.ubnt.com/unifi/5.6.16-86cdeea491/unifi_sysvinit_all.deb \
     && dpkg -i unifi_sysvinit_all.deb \
     && rm unifi_sysvinit_all.deb
 
