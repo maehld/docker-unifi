@@ -1,5 +1,5 @@
 FROM ubuntu:17.04
-MAINTAINER Dominik Mähl <dominik@maehl.eu>
+LABEL maintainer="Dominik Mähl <dominik@maehl.eu>"
 
 VOLUME ["/var/lib/unifi", "/var/log/unifi", "/var/run/unifi"]
 
@@ -19,7 +19,7 @@ RUN apt update \
     && rm -rf /var/cache/oracle-jdk8-installer
 
 #install UniFi Controller
-RUN curl -OLS https://dl.ubnt.com/unifi/5.6.16-86cdeea491/unifi_sysvinit_all.deb \
+RUN curl -OLS https://dl.ubnt.com/unifi/5.6.18-8261dc5066/unifi_sysvinit_all.deb \
     && dpkg -i unifi_sysvinit_all.deb \
     && rm unifi_sysvinit_all.deb
 
