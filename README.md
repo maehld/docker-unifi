@@ -9,7 +9,7 @@ This image has three volumes:
 - /var/log/unifi
   - stores the logs of both the Controller and MongoDB
 - /var/run/unifi
-  - possibly but needed but included in this first version anyway :-)
+  - possibly not needed but included in this first version anyway :-)
 
 To get a minimal controller up and running you would need to run something like this:
 
