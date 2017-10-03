@@ -1,4 +1,4 @@
-FROM bitnami/minideb:jessie
+FROM bitnami/minideb:stretch
 LABEL maintainer="Dominik Mähl <dominik@maehl.eu>"
 
 VOLUME ["/var/lib/unifi", "/var/log/unifi", "/var/run/unifi"]
