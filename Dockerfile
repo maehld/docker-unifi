@@ -12,10 +12,10 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN install_packages curl mongodb-server libcap2 ca-certificates binutils jsvc
 
 #install oracle jdk
-RUN curl -OLS -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz \
+RUN curl -OLS -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.java.net/java/jdk8u162/archive/b01/binaries/jdk-8u162-ea-bin-b01-linux-x64-04_oct_2017.tar.gz \
     && mkdir /opt/jdk \
-    && tar xvzf jdk-8u144-linux-x64.tar.gz --strip 1 -C /opt/jdk \
-    && rm jdk-8u144-linux-x64.tar.gz
+    && tar xvzf jdk-8u162-ea-bin-b01-linux-x64-04_oct_2017.tar.gz --strip 1 -C /opt/jdk \
+    && rm jdk-8u162-ea-bin-b01-linux-x64-04_oct_2017.tar.gz
 
 #install UniFi Controller
 RUN curl -OLS https://dl.ubnt.com/unifi/5.6.20-11ecc42d69/unifi_sysvinit_all.deb \
