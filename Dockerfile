@@ -18,7 +18,7 @@ RUN curl -LS -o "jdk.tar.gz" -H "Cookie: oraclelicense=accept-securebackup-cooki
     && rm jdk.tar.gz
 
 #install UniFi Controller
-RUN curl -OLS https://dl.ubnt.com/unifi/5.10.10-20316752b4/unifi_sysvinit_all.deb \
+RUN curl -OLS https://dl.ubnt.com/unifi/5.10.11-6e1800b9b9/unifi_sysvinit_all.deb \
     && dpkg --force-all -i unifi_sysvinit_all.deb \
     && rm unifi_sysvinit_all.deb
 
