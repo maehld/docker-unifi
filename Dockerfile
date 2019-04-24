@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN install_packages curl mongodb-server libcap2 ca-certificates binutils jsvc
 
 #install oracle jdk
-RUN curl -LS -o "jdk.tar.gz" -H "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz \
+RUN curl -LS -o "jdk.tar.gz" https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b03/OpenJDK8U-jdk_x64_linux_hotspot_8u212b03.tar.gz \
     && mkdir /opt/jdk \
     && tar xvzf jdk.tar.gz --strip 1 -C /opt/jdk \
     && rm jdk.tar.gz
