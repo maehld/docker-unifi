@@ -11,14 +11,14 @@ ENV DEBIAN_FRONTEND noninteractive
 #install needed packages
 RUN install_packages curl mongodb-server libcap2 ca-certificates binutils jsvc
 
-#install oracle jdk
+#install open jdk
 RUN curl -LS -o "jdk.tar.gz" https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b03/OpenJDK8U-jdk_x64_linux_hotspot_8u212b03.tar.gz \
     && mkdir /opt/jdk \
     && tar xvzf jdk.tar.gz --strip 1 -C /opt/jdk \
     && rm jdk.tar.gz
 
 #install UniFi Controller
-RUN curl -LS -o unifi.deb https://dl.ubnt.com/unifi/5.11.18-996baf2ca5/unifi_sysvinit_all.deb \
+RUN curl -LS -o unifi.deb https://dl.ui.com/unifi/5.11.26-1ecdee774d/unifi_sysvinit_all.deb \
     && dpkg --force-all -i unifi.deb \
     && rm unifi.deb
 
