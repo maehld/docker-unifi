@@ -1,6 +1,12 @@
 name: Docker Image CI
 
-on: [push]
+on: 
+  push:
+    tags:
+      - *
+
+env:
+  IMAGE_NAME: unifi
 
 jobs:
 
@@ -9,6 +15,27 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - uses: actions/checkout@v1
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag maehld-unifi:$(date +%s)
+    - uses: actions/checkout@v2
+
+    - name: build image
+      run: docker build . --file Dockerfile --tag $IMAGE_NAME
+    
+    - name: log in to registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
+    - name: publish image
+      run: |
+        IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+        [ "$VERSION" == "master" ] && VERSION=latest
+
+        echo IMAGE_ID=$IMAGE_ID
+        echo VERSION=$VERSION
+
+        docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
+      
