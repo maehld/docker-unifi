@@ -22,7 +22,7 @@ jobs:
 
     - name: publish image
       run: |
-        IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
+        IMAGE_ID=ghcr.io/maehld/$IMAGE_NAME
 
         VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
 
