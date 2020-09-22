@@ -18,7 +18,7 @@ RUN curl -LS -o "jdk.tar.gz" https://github.com/AdoptOpenJDK/openjdk8-binaries/r
     && rm jdk.tar.gz
 
 #install UniFi Controller
-RUN curl -LS -o unifi.deb https://dl.ui.com/unifi/6.0.22/unifi_sysvinit_all.deb \
+RUN curl -LS -o unifi.deb https://dl.ui.com/unifi/6.0.23-20b313f50d/unifi_sysvinit_all.deb \
     && dpkg --force-all -i unifi.deb \
     && rm unifi.deb
 
