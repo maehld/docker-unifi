@@ -18,7 +18,7 @@ RUN curl -LS -o "jdk.tar.gz" https://github.com/adoptium/temurin8-binaries/relea
     && rm jdk.tar.gz
 
 #install UniFi Controller
-RUN curl -LS -o unifi.deb https://dl.ui.com/unifi/6.4.50-00f579cd4c/unifi_sysvinit_all.deb \
+RUN curl -LS -o unifi.deb https://dl.ui.com/unifi/6.5.45-c8122c1151/unifi_sysvinit_all.deb \
     && dpkg --force-all -i unifi.deb \
     && rm unifi.deb
 
