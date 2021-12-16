@@ -12,13 +12,13 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN install_packages curl mongodb-server libcap2 ca-certificates binutils jsvc
 
 #install open jdk
-RUN curl -LS -o "jdk.tar.gz" https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u302-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u302b08.tar.gz \
+RUN curl -LS -o "jdk.tar.gz" https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jdk_x64_linux_hotspot_8u312b07.tar.gz \
     && mkdir /opt/jdk \
     && tar xvzf jdk.tar.gz --strip 1 -C /opt/jdk \
     && rm jdk.tar.gz
 
 #install UniFi Controller
-RUN curl -LS -o unifi.deb https://dl.ui.com/unifi/6.5.45-c8122c1151/unifi_sysvinit_all.deb \
+RUN curl -LS -o unifi.deb https://dl.ui.com/unifi/6.5.55/unifi_sysvinit_all.deb \
     && dpkg --force-all -i unifi.deb \
     && rm unifi.deb
 
