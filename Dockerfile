@@ -1,4 +1,4 @@
-FROM bitnami/minideb:latest
+FROM bitnami/minideb:bullseye
 LABEL maintainer="Dominik Mähl <dominik@maehl.eu>"
 
 VOLUME ["/var/lib/unifi", "/var/log/unifi", "/var/run/unifi"]
