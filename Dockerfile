@@ -9,7 +9,12 @@ EXPOSE 8080/tcp 8443/tcp 8880/tcp 8883/tcp 8843/tcp 6789/tcp 3478/udp 10001/udp
 ENV DEBIAN_FRONTEND noninteractive
 
 #install needed packages
-RUN install_packages curl mongodb-server libcap2 ca-certificates binutils jsvc
+RUN install_packages curl gnupg libcap2 ca-certificates binutils jsvc
+
+#install mongodb
+RUN curl -fsSL https://pgp.mongodb.com/server-6.0.asc | gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
+    && echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg] http://repo.mongodb.org/apt/debian bullseye/mongodb-org/6.0 main" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+    && install_packages mongodb-org
 
 #install open jdk
 RUN curl -LS -o "jdk.tar.gz" https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.19%2B7/OpenJDK11U-jdk_x64_linux_hotspot_11.0.19_7.tar.gz \
